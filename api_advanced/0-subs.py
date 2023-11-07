@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""
-function that return the number of subscribers from a REDDIT API 
-"""
+"""Module"""
 
 import requests
+import sys
 
 
 def number_of_subscribers(subreddit):
@@ -21,10 +20,8 @@ def number_of_subscribers(subreddit):
 
 
 if __name__ == "__main__":
-    import sys
     if len(sys.argv) < 2:
-        print("Please pass an argument")
-
+        print("Please pass an argument for the subreddit to search.")
     else:
         subreddit = sys.argv[1]
         num_subscribers = number_of_subscribers(subreddit)
