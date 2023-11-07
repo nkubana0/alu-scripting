@@ -8,6 +8,8 @@ import sys
 
 
 def number_of_subscribers(subreddit):
+    """Function that return the number of subscribers from REDDIT API"""
+
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {"User-Agent": "MyRedditBot/1.0 (by YourUsername)"}
 
