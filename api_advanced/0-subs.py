@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 """Module"""
 
+import json
 import requests
 import sys
-
-"""Module"""
 
 
 def number_of_subscribers(subreddit):
     """Function that return the number of subscribers from REDDIT API"""
 
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "MyRedditBot/1.0 (by YourUsername)"}
 
     response = requests.get(url, headers=headers)
