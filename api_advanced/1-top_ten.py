@@ -7,6 +7,7 @@ import json
 import requests
 import sys
 
+
 def top_ten(subreddit):
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {'User-agent': 'myRedditScript/1.0'}
@@ -15,7 +16,8 @@ def top_ten(subreddit):
     if response.status_code == 200:
         data = response.json()
         if 'data' in data and 'children' in data['data']:
-            top_posts = [post['data']['title'] for post in data['data']['children']]
+            top_posts = [post['data']['title']
+                         for post in data['data']['children']]
             for post_title in top_posts:
                 print(post_title)
         else:
@@ -23,9 +25,9 @@ def top_ten(subreddit):
     else:
         print("None")
 
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Please pass an argument for the subreddit to search.")
     else:
         top_ten(sys.argv[1])
-
