@@ -10,7 +10,7 @@ import sys
 
 
 def recurse(subreddit, hot_list=None, after=None):
-    if hot_list == None:
+    if hot_list = None:
         hot_list = []
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
