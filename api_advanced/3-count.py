@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """
-1-main
+function that queries the Reddit API
+parses the title of all hot articles
+prints a sorted count of given keywords
 """
 import requests
 
 
 def count_words(subreddit, word_list):
     """
-    1-main
+    Module
     """
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'cynt user agent 1.1'}
+    headers = {'User-Agent': 'myRedditScript/1.0'}
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
 
