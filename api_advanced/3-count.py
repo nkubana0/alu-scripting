@@ -9,21 +9,18 @@ import json
 import requests
 import sys
 
-
 def count_words(subreddit, word_list, counts=None, after=None):
-
+    if counts is None:
+        counts = {}
+    for word in word_list:
+        if word.lower() not in counts:
+            counts[word.lower()] = 0
+    
     url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
     headers = {'User-agent': 'myRedditScript/1.0'}
     params = {'after': after} if after else {}
 
-    response = requests.get(url, headers=headers,
-                            params=params, allow_redirects=False)
-
-    if counts is None:
-        counts = {}
-        for word in word_list:
-            if word.lower() not in counts:
-                counts[word.lower()] = 0
+    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
 
     if response.status_code == 200:
         data = response.json()
@@ -40,8 +37,7 @@ def count_words(subreddit, word_list, counts=None, after=None):
             if after:
                 return count_words(subreddit, word_list, counts, after)
             else:
-                sorted_counts = sorted(
-                    counts.items(), key=lambda x: (-x[1], x[0]))
+                sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
                 for word, count in sorted_counts:
                     if count > 0:
                         print(f"{word}: {count}")
@@ -50,12 +46,9 @@ def count_words(subreddit, word_list, counts=None, after=None):
     else:
         print("Invalid subreddit or no posts match")
 
-
 if __name__ == '__main__':
-    import sys
     if len(sys.argv) < 3:
         print("Usage: {} <subreddit> <list of keywords>".format(sys.argv[0]))
-        print("Ex: {} programming 'python java javascript'".format(
-            sys.argv[0]))
+        print("Ex: {} programming 'python java javascript'".format(sys.argv[0]))
     else:
         count_words(sys.argv[1], [x.lower() for x in sys.argv[2].split()])
