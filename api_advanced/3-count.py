@@ -12,12 +12,7 @@ import sys
 
 def count_words(subreddit, word_list, counts=None, after=None):
     if counts is None:
-        counts = {}
-        for word in word_list:
-            counts[word.lower()] = 0
-
-    if after is None:
-        after = ''
+        counts = []
 
     url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
     headers = {'User-agent': 'myRedditScript/1.0'}
