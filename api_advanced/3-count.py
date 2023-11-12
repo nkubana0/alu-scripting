@@ -10,9 +10,6 @@ import requests
 import sys
 
 
-import requests
-
-
 def count_words(subreddit, word_list, counts=None, after=None):
     if counts is None:
         counts = {}
