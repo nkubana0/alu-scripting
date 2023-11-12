@@ -16,7 +16,7 @@ def count_words(subreddit, word_list, after=None, results=None):
     if results is None:
         results = {}
 
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json'
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     params = {'limit': 10, 'after': after} if after else {'limit': 10}
 
     # Make a request to the Reddit API
