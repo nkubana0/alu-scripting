@@ -5,9 +5,7 @@ parses the title of all hot articles
 prints a sorted count of given keywords
 """
 
-import json
 import requests
-import sys
 
 
 import requests
