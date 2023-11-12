@@ -8,13 +8,7 @@ prints a sorted count of given keywords
 import requests
 
 
-import requests
-
 def count_words(subreddit, word_list, counts=None, after=None):
-    """
-    Count occurrences of keywords in the titles of hot articles in a subreddit.
-
-    """
     if counts is None:
         counts = {}
 
